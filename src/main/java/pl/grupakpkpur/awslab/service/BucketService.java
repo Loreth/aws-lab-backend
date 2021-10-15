@@ -1,7 +1,6 @@
 package pl.grupakpkpur.awslab.service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import pl.grupakpkpur.awslab.model.BucketDto;
 import software.amazon.awssdk.regions.Region;
@@ -15,6 +14,6 @@ public class BucketService {
   public List<BucketDto> listBuckets() {
     return s3.listBuckets().buckets().stream()
         .map(bucket -> new BucketDto(bucket.name(), bucket.creationDate()))
-        .collect(Collectors.toList());
+        .toList();
   }
 }
