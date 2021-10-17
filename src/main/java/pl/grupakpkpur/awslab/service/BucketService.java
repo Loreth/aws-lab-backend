@@ -15,7 +15,6 @@ import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.services.s3.presigner.S3Presigner;
 
 import java.io.IOException;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -55,6 +54,7 @@ public class BucketService {
         e.printStackTrace();
       }
     }
+  }
 
   private URL createPresignedS3ObjectDownloadUrl(String bucketName, String objectKey) {
     return s3Presigner
