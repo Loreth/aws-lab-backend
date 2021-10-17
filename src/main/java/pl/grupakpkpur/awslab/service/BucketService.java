@@ -5,11 +5,17 @@ import java.time.Duration;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import pl.grupakpkpur.awslab.model.BucketDto;
 import pl.grupakpkpur.awslab.model.S3ObjectDto;
+import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.services.s3.presigner.S3Presigner;
+
+import java.io.IOException;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -35,6 +41,20 @@ public class BucketService {
                     createPresignedS3ObjectDownloadUrl(bucketName, s3Object.key())))
         .toList();
   }
+
+  public void uploadFilesToBucket(String bucketName, List<MultipartFile> files) {
+    for (MultipartFile f:files) {
+    PutObjectRequest objectRequest = PutObjectRequest.builder()
+            .bucket(bucketName)
+            .key(f.getOriginalFilename())
+            .build();
+
+      try {
+        s3.putObject(objectRequest, RequestBody.fromBytes(f.getBytes()));
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
 
   private URL createPresignedS3ObjectDownloadUrl(String bucketName, String objectKey) {
     return s3Presigner

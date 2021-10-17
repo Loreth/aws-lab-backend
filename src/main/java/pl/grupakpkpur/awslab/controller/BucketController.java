@@ -1,11 +1,10 @@
 package pl.grupakpkpur.awslab.controller;
 
+import java.util.Arrays;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import pl.grupakpkpur.awslab.model.BucketDto;
 import pl.grupakpkpur.awslab.model.S3ObjectDto;
 import pl.grupakpkpur.awslab.service.BucketService;
@@ -24,5 +23,10 @@ public class BucketController {
   @GetMapping("/{bucketName}")
   public List<S3ObjectDto> getObjectsInBucket(@PathVariable String bucketName) {
     return bucketService.listFilesInBucket(bucketName);
+  }
+
+  @PostMapping("/{bucketName}")
+  public void uploadFiles(@PathVariable String bucketName, @RequestPart("fileList") List<MultipartFile> files){
+    bucketService.uploadFilesToBucket(bucketName, files);
   }
 }
