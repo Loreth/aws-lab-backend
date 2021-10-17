@@ -22,7 +22,7 @@ public class Ec2Controller {
 
 	@PostMapping("/create")
 	@ResponseBody
-	public String createInstance(@RequestBody Ec2CreateRequest createRequest) {
+	public Ec2InstanceResponse createInstance(@RequestBody Ec2CreateRequest createRequest) {
 		return ec2Service.createInstance(createRequest.name());
 	}
 

@@ -17,7 +17,7 @@ public record Ec2InstanceResponse(String id, String name, String imageId, Instan
 				instance.tags().stream()
 						.filter(tag -> tag.key().equals("Name"))
 						.findFirst()
-						.map(Tag::key)
+						.map(Tag::value)
 						.orElse(null),
 				instance.imageId(),
 				instance.instanceType(),

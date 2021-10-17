@@ -17,7 +17,7 @@ public class Ec2Service {
 	private static final String AMAZON_LINUX_AMI_ID = "ami-02e136e904f3da870";
 	private final Ec2Client ec2 = Ec2Client.builder().region(REGION).build();
 
-	public String createInstance(String name) {
+	public Ec2InstanceResponse createInstance(String name) {
 		RunInstancesRequest runRequest =
 				RunInstancesRequest.builder()
 						.imageId(AMAZON_LINUX_AMI_ID)
@@ -27,7 +27,8 @@ public class Ec2Service {
 						.build();
 
 		RunInstancesResponse response = ec2.runInstances(runRequest);
-		String instanceId = response.instances().get(0).instanceId();
+		Instance createdInstance = response.instances().get(0);
+		String instanceId = createdInstance.instanceId();
 
 		Tag tag = Tag.builder().key("Name").value(name).build();
 
@@ -37,11 +38,11 @@ public class Ec2Service {
 			ec2.createTags(tagRequest);
 			System.out.printf("Successfully created EC2 Instance %s based on AMI %s\n", instanceId, AMAZON_LINUX_AMI_ID);
 
-			return instanceId;
+			return Ec2InstanceResponse.fromInstance(createdInstance);
 
 		} catch (Ec2Exception exception) {
 			System.err.println(exception.awsErrorDetails().errorMessage());
-			return "";
+			return null;
 		}
 	}
 
