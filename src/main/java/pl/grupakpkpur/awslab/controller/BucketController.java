@@ -3,9 +3,11 @@ package pl.grupakpkpur.awslab.controller;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.grupakpkpur.awslab.model.BucketDto;
+import pl.grupakpkpur.awslab.model.S3ObjectDto;
 import pl.grupakpkpur.awslab.service.BucketService;
 
 @RequiredArgsConstructor
@@ -17,5 +19,10 @@ public class BucketController {
   @GetMapping
   public List<BucketDto> getBuckets() {
     return bucketService.listBuckets();
+  }
+
+  @GetMapping("/{bucketName}")
+  public List<S3ObjectDto> getObjectsInBucket(@PathVariable String bucketName) {
+    return bucketService.listFilesInBucket(bucketName);
   }
 }
