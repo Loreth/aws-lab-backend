@@ -6,7 +6,6 @@ import pl.grupakpkpur.awslab.model.BucketDto;
 import pl.grupakpkpur.awslab.model.S3ObjectDto;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
-import software.amazon.awssdk.services.s3.model.ListObjectsV2Request;
 
 @Service
 public class BucketService {
@@ -20,8 +19,7 @@ public class BucketService {
   }
 
   public List<S3ObjectDto> listFilesInBucket(String bucketName) {
-    ListObjectsV2Request request = ListObjectsV2Request.builder().bucket(bucketName).build();
-    return s3.listObjectsV2(request).contents().stream()
+    return s3.listObjectsV2(builder -> builder.bucket(bucketName)).contents().stream()
         .map(s3Object -> new S3ObjectDto(s3Object.key(), s3Object.size(), s3Object.lastModified()))
         .toList();
   }
