@@ -1,7 +1,7 @@
 package pl.grupakpkpur.awslab.service;
 
 import org.springframework.stereotype.Service;
-import pl.grupakpkpur.awslab.dto.ec2.Ec2InstanceResponse;
+import pl.grupakpkpur.awslab.model.ec2.Ec2InstanceResponse;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.ec2.Ec2Client;
 import software.amazon.awssdk.services.ec2.model.*;
