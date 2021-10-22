@@ -1,4 +1,4 @@
-package pl.grupakpkpur.awslab.dto.ec2;
+package pl.grupakpkpur.awslab.model.ec2;
 
 import software.amazon.awssdk.services.ec2.model.Instance;
 import software.amazon.awssdk.services.ec2.model.InstanceStateName;

@@ -2,7 +2,7 @@ package pl.grupakpkpur.awslab.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import pl.grupakpkpur.awslab.dto.ec2.*;
+import pl.grupakpkpur.awslab.model.ec2.*;
 import pl.grupakpkpur.awslab.service.Ec2Service;
 
 import java.util.List;
