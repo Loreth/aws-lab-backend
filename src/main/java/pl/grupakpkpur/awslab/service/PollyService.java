@@ -9,7 +9,6 @@ import software.amazon.awssdk.services.polly.model.*;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
