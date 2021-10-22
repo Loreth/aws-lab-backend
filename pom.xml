@@ -66,6 +66,10 @@
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>polly</artifactId>
         </dependency>
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>comprehend</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
