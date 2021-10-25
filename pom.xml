@@ -74,6 +74,10 @@
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>rekognition</artifactId>
         </dependency>
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>textract</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
