@@ -1,12 +1,11 @@
 package pl.grupakpkpur.awslab.controller;
 
-import java.util.Arrays;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import pl.grupakpkpur.awslab.model.BucketDto;
-import pl.grupakpkpur.awslab.model.S3ObjectDto;
+import pl.grupakpkpur.awslab.model.s3.BucketDto;
+import pl.grupakpkpur.awslab.model.s3.S3ObjectDto;
 import pl.grupakpkpur.awslab.service.BucketService;
 
 @RequiredArgsConstructor

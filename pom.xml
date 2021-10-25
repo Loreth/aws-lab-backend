@@ -75,7 +75,14 @@
             <artifactId>aws-java-sdk-translate</artifactId>
             <version>1.12.94</version>
         </dependency>
-
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>rekognition</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>textract</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
