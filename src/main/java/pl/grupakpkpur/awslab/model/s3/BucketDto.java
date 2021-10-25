@@ -1,4 +1,4 @@
-package pl.grupakpkpur.awslab.model;
+package pl.grupakpkpur.awslab.model.s3;
 
 import java.time.Instant;
 
