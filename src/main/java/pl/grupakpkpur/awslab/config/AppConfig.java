@@ -8,14 +8,12 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import org.socialsignin.spring.data.dynamodb.repository.config.EnableDynamoDBRepositories;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import software.amazon.awssdk.services.s3.presigner.S3Presigner;
 
 @Configuration
 @EnableDynamoDBRepositories(basePackages = "pl.grupakpkpur.awslab.repository")
-public class AppConfig {
-
+public class AppConfig implements WebMvcConfigurer {
   @Bean
   public S3Presigner s3Presigner() {
     return S3Presigner.builder().region(US_EAST_1).build();
