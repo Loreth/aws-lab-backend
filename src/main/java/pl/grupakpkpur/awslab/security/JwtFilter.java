@@ -1,5 +1,6 @@
 package pl.grupakpkpur.awslab.security;
 
+import static org.apache.logging.log4j.util.Strings.isBlank;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 import java.io.IOException;
@@ -28,6 +29,11 @@ public class JwtFilter extends OncePerRequestFilter {
       throws ServletException, IOException {
     String authHeader = request.getHeader(AUTHORIZATION);
     String jwtToken = jwtUtil.parseJwtHeader(authHeader);
+
+    if (isBlank(authHeader)) {
+      chain.doFilter(request, response);
+      return;
+    }
 
     jwtUtil.validateToken(jwtToken);
 

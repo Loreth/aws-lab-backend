@@ -4,6 +4,7 @@ import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,6 +22,7 @@ import pl.grupakpkpur.awslab.security.JwtFilter;
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
   private final JwtFilter jwtFilter;
+  @Value("${rest.mapping.login}") private String loginUrl;
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
@@ -34,16 +36,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
         .httpBasic()
         .disable()
-        .formLogin()
-        .loginProcessingUrl("/login")
-        .loginPage("/login")
-        .permitAll()
-        .and()
         .exceptionHandling()
         .authenticationEntryPoint(
             (request, response, ex) -> response.sendError(UNAUTHORIZED.value(), ex.getMessage()))
         .and()
         .authorizeRequests()
+        .antMatchers(loginUrl).permitAll()
         .anyRequest()
         .authenticated();
   }
