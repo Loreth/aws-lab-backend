@@ -1,4 +1,4 @@
-package pl.grupakpkpur.awslab.model.administration;
+package pl.grupakpkpur.awslab.model.authentication;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;

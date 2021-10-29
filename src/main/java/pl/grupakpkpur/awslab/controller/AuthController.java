@@ -8,9 +8,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import pl.grupakpkpur.awslab.model.administration.AuthReponse;
-import pl.grupakpkpur.awslab.model.administration.AuthRequest;
-import pl.grupakpkpur.awslab.model.administration.User;
+import pl.grupakpkpur.awslab.model.authentication.AuthReponse;
+import pl.grupakpkpur.awslab.model.authentication.AuthRequest;
+import pl.grupakpkpur.awslab.model.authentication.User;
 import pl.grupakpkpur.awslab.security.JwtUtil;
 
 @RestController
