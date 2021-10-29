@@ -34,8 +34,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .sessionManagement()
         .sessionCreationPolicy(STATELESS)
         .and()
-        .httpBasic()
-        .disable()
         .exceptionHandling()
         .authenticationEntryPoint(
             (request, response, ex) -> response.sendError(UNAUTHORIZED.value(), ex.getMessage()))

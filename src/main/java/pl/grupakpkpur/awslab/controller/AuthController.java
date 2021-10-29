@@ -6,6 +6,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import pl.grupakpkpur.awslab.model.administration.AuthReponse;
 import pl.grupakpkpur.awslab.model.administration.AuthRequest;
@@ -19,7 +20,7 @@ public class AuthController {
   private final JwtUtil jwtUtil;
 
   @PostMapping("${rest.mapping.login}")
-  public ResponseEntity<AuthReponse> login(AuthRequest request) {
+  public ResponseEntity<AuthReponse> login(@RequestBody AuthRequest request) {
     UsernamePasswordAuthenticationToken authenticationToken =
         new UsernamePasswordAuthenticationToken(request.username(), request.password());
     Authentication authentication = authenticationManager.authenticate(authenticationToken);
