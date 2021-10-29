@@ -83,6 +83,11 @@
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>textract</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.derjust</groupId>
+            <artifactId>spring-data-dynamodb</artifactId>
+            <version>5.1.0</version>
+        </dependency>
     </dependencies>
 
     <build>
