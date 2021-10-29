@@ -11,7 +11,7 @@ import java.util.Date;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import pl.grupakpkpur.awslab.model.administration.User;
+import pl.grupakpkpur.awslab.model.authentication.User;
 
 @Component
 @RequiredArgsConstructor
