@@ -1,10 +1,7 @@
 package pl.grupakpkpur.awslab.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.grupakpkpur.awslab.model.logging.LogEntryRequest;
 import pl.grupakpkpur.awslab.service.LoggingService;
 
