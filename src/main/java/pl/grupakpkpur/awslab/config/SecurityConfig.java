@@ -22,7 +22,9 @@ import pl.grupakpkpur.awslab.security.JwtFilter;
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
   private final JwtFilter jwtFilter;
-  @Value("${rest.mapping.login}") private String loginUrl;
+
+  @Value("${rest.mapping.login}")
+  private String loginUrl;
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
@@ -34,12 +36,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .sessionManagement()
         .sessionCreationPolicy(STATELESS)
         .and()
+        .httpBasic()
+        .disable()
         .exceptionHandling()
         .authenticationEntryPoint(
             (request, response, ex) -> response.sendError(UNAUTHORIZED.value(), ex.getMessage()))
         .and()
         .authorizeRequests()
-        .antMatchers(loginUrl).permitAll()
+        .antMatchers(loginUrl)
+        .permitAll()
         .anyRequest()
         .authenticated();
   }
@@ -49,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     CorsConfiguration config = new CorsConfiguration();
     config.setAllowCredentials(true);
-    config.addAllowedOrigin("*");
+    config.addAllowedOrigin("http://localhost:4200");
     config.addAllowedHeader("*");
     config.addAllowedMethod("*");
     source.registerCorsConfiguration("/**", config);
