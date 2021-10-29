@@ -14,11 +14,7 @@ import software.amazon.awssdk.services.s3.presigner.S3Presigner;
 
 @Configuration
 @EnableDynamoDBRepositories(basePackages = "pl.grupakpkpur.awslab.repository")
-public class AppConfig implements WebMvcConfigurer {
-  @Override
-  public void addCorsMappings(CorsRegistry registry) {
-    registry.addMapping("/**").allowedMethods("*").allowedOrigins("http://localhost:4200");
-  }
+public class AppConfig {
 
   @Bean
   public S3Presigner s3Presigner() {

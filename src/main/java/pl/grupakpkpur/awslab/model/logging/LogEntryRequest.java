@@ -1,6 +1,6 @@
 package pl.grupakpkpur.awslab.model.logging;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
-public record LogEntryRequest(LocalDateTime date, String ip, String url, String method, Object body, Long userId, String userName) {
+public record LogEntryRequest(Date date, String ip, String url, String method, Object body, Long userId, String userName) {
 }
