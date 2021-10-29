@@ -13,7 +13,6 @@ public class LoggingService {
 	private final LoggingRepository loggingRepository;
 
 	public void logEntry(LogEntryRequest request) {
-		System.out.println(request);
 		loggingRepository.save(LogEntry.fromRequest(request));
 	}
 }
