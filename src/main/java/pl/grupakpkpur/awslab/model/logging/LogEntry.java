@@ -12,15 +12,14 @@ import java.util.Date;
 @Data
 public class LogEntry {
 
-	public static LogEntry fromRequest(LogEntryRequest request) {
+	public static LogEntry fromRequest(LogEntryRequest request, String username) {
 		LogEntry entry = new LogEntry();
 		entry.setDate(request.date());
 		entry.setIp(request.ip());
 		entry.setUrl(request.url());
 		entry.setMethod(request.method());
 		entry.setBody(request.body());
-		entry.setUserId(request.userId());
-		entry.setUserName(request.userName());
+		entry.setUsername(username);
 
 		return entry;
 	}
@@ -35,6 +34,5 @@ public class LogEntry {
 
 	@DynamoDBTypeConvertedJson
 	private Object body;
-	private Long userId;
-	private String userName;
+	private String username;
 }
